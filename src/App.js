@@ -28,7 +28,7 @@ function App() {
         <Switch>
           <Route exact path='/'>
             {/* Home Page */}
-            <Homepage onGraphChange={handleGraphChange}/>
+            <Homepage onGraphChange={setGraph}/>
           </Route>
           <Route path="/analysis">
             {/* Analysis Page */}
