@@ -5,14 +5,6 @@ export const Analysis = ({graph}) => {
 
     const [analysis, setAnalysis] = useState({})
     
-    // useEffect(() => {
-    //     fetch(`/analysis/${JSON.stringify(graph)}`).then(res => {
-    //         if (res.ok) {
-    //             return res.json()
-    //         }
-    //     }).then(data => console.log(data))
-    // }, [])
-
 
     useEffect(()=> {
         fetch('/analysis',{
@@ -25,7 +17,9 @@ export const Analysis = ({graph}) => {
             if (res.ok){
                 return res.json()
             }
-        }).then(data => console.log(data))
+        }).then(data => {
+            console.log(data)
+            setAnalysis(data)})
     },[])
 
 
@@ -33,7 +27,7 @@ export const Analysis = ({graph}) => {
     return(
         <>
         <h1>Analysis</h1>
-
+        
         </>
     )
 }
