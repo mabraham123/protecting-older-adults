@@ -4,13 +4,26 @@ Nodes={}
 passwords=[]
 devices=[]
 
+##Initialiser for global variables
+
 
 def convert_json_to_dictionary(json_file):
     return json.loads(json_file)
 
+def initialiser():
+    global Nodes    # Needed to modify global copy of Devices
+    Nodes = {}
+    
+    global passwords    # Needed to modify global copy of passwords
+    passwords = []
+
+    global devices    # Needed to modify global copy of devices
+    devices = []
+
 
 #Wrapper function
 def graph_analysis(account_access_interview_data):
+    initialiser()
     #analysis={}
     #Convert data into a graph data structure
     convert_account_access_data_to_graph(account_access_interview_data)
@@ -18,9 +31,6 @@ def graph_analysis(account_access_interview_data):
     #Find the accounts with 2FA
 
     analysis={
-        "accountaccess":Nodes,
-        "passwords": passwords,
-        "devices": devices,
         #Find the user defined weak passwords
         "bad_passwords": find_user_defined_weak_passwords(),
         #Find re-used passwords
@@ -136,3 +146,6 @@ def find_reused_passwords():
             })
 
     return reused_passwords
+
+
+ 
