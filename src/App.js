@@ -3,22 +3,16 @@ import './App.scss';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 import { Homepage } from './Pages/homepage';
 import { Analysis } from './Pages/analysis'
 
 function App() {
   const [graph, setGraph] = useState({})
-
-  const handleGraphChange = (inputValue) =>{
-    setGraph(inputValue)
-    console.log(graph)
-}
 
 
   // Routes for pages
