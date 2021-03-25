@@ -1,6 +1,8 @@
 import React,{ useState } from 'react'
 
 import {Link} from 'react-router-dom'
+import { Container, Button, Form, Card } from 'semantic-ui-react'
+
 
 export const Homepage = ({ onGraphChange }) => {
 
@@ -41,9 +43,24 @@ export const Homepage = ({ onGraphChange }) => {
 
     return(
         <>
-            <h1>Home</h1>
-            <input type="file" onChange={(e)=> onFileSelected(e)} accept=".json"/>
-             <Link to={`/analysis`}><button onClick={handleChange}>Click</button></Link>
+            <Container>
+                <h1>Home</h1>     
+
+                <Card>
+                    <Card.Content>
+                    <Card.Header>Upload Data</Card.Header>
+                    <Card.Description>
+                        <Form>
+                            <Form.Field>
+                                <label>Upload Access Interview Data</label>
+                                <input type="file" onChange={(e)=> onFileSelected(e)} accept=".json"/>
+                            </Form.Field>
+                            <Link to={`/analysis`}> <Button primary onClick={handleChange}>Primary</Button></Link>
+                        </Form>
+                    </Card.Description>
+                    </Card.Content>
+                </Card>
+            </Container>
         </>
     )
 }
