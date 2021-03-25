@@ -141,7 +141,7 @@ def find_reused_passwords():
     for index in range(len(passwords)):
         if len(Nodes[passwords[index]].get("out_edges").get("edges")) + len(Nodes[passwords[index]].get("out_edges").get("recovery")) > 1:
             reused_passwords['reused'].append({
-                "name": passwords[index],
+                "name": Nodes[passwords[index]].get("name"),
                 "account_liked": Nodes[passwords[index]].get("out_edges").get("edges") + Nodes[passwords[index]].get("out_edges").get("recovery")
             })
 
