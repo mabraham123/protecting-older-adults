@@ -12,7 +12,7 @@ const header = ({name,linked,solution}) =>{
     }
     
     return(
-        <Card>
+        <Card fluid>
             <Card.Content>
                 <Card.Header><h1>Critical Issue</h1></Card.Header>
                 <Card.Meta>
