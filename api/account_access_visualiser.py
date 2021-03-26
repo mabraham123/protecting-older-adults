@@ -24,10 +24,9 @@ def initialiser():
 #Wrapper function
 def graph_analysis(account_access_interview_data):
     initialiser()
-    #analysis={}
+
     #Convert data into a graph data structure
     convert_account_access_data_to_graph(account_access_interview_data)
-
     #Find the accounts with 2FA
 
     analysis={
@@ -38,9 +37,6 @@ def graph_analysis(account_access_interview_data):
     }
     return analysis
 
-
-
-#{'name': 'stonechat1', 'type': 'Password', 'opensessions': [], 'incoming': [{'recovery': False, 'needed': ['Password Manager: WordDocFile']}
 
 def convert_account_access_data_to_graph(data):
     #Loop through every account in data to make a graph
@@ -134,7 +130,7 @@ def find_user_defined_weak_passwords():
 def find_reused_passwords():
     reused_passwords={
         'reused':[],
-        'solution': "Don't reuse any passwords"
+        'solution': "Avoid reusing passwords by using a different password for all of your accounts. If you are having trouble remembering all of your passwords you might benigit from some password management strategies."
     }
 
     #Loop all the passwords
