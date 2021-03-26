@@ -1,6 +1,23 @@
 @import 'styles/config';
 
+*{font-size: 16px;}
 
 .red{
     color:red
+}
+
+.header{
+    min-height: 700;
+    padding: 1em 0em;
+
+}
+
+.headerContent{
+    font-size:3em;
+    font-weight: bold;
+    padding-top: 3em;
+    padding-bottom: 1.5em;
+}
+.headerForm{
+    margin-bottom: 5em;
 }
