@@ -6,11 +6,11 @@ import { Container,
     Form, 
     Header,
     Icon,
-    Segment,
-    Grid,
-    Image
+    Segment
 } from 'semantic-ui-react'
 
+import Title from '../Components/Header/title'
+import Footer from '../Components/Footer/footer'
 
 
 
@@ -47,20 +47,18 @@ export const Homepage = ({ onGraphChange }) => {
 
     const renderBody = () => {
         return (
-        <Segment style={{padding: '5em 0em'}} vertical>
+        <Segment vertical>
+            <div className='segment'>
         <Container text>
-            <h2>
-            Breaking The Grid, Grabs Your Attention
+            <h2>Remember to add text here
             </h2>
             <p>
-            Instead of focusing on content creation and hard work, we have learned how to master the
-            art of doing nothing by providing massive amounts of whitespace and generic content that
-            can seem massive, monolithic and worth your attention.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
         </Container>
-    </Segment>
-    
-    )
+        </div>
+        </Segment>
+        )
     }
 
     const renderHeroHeader = () => {
@@ -71,15 +69,7 @@ export const Homepage = ({ onGraphChange }) => {
         className='header'
         vertical
         >
-            <Container>
-                <Header
-                as='h3'
-                content='Protecting Older Adults Online'
-                floated='left'
-                inverted
-                color='blue'
-                />
-            </Container>
+            <Title/>
             <Container text>
                 <h1 className='headerContent'>Find Vulnerabilities in your Personal Account Ecosystem</h1>
                 
@@ -105,6 +95,7 @@ export const Homepage = ({ onGraphChange }) => {
         <>
         {renderHeroHeader()}
         {renderBody()}
+        <Footer/>
         </>
     )
 }
