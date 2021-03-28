@@ -21,3 +21,39 @@
 .headerForm{
     margin-bottom: 5em;
 }
+
+
+.analysisHeader{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(163,226,124,1) 100%);
+}
+
+.grade{
+    font-weight: bold;
+    font-size: 10em;
+    color: #3CAE6A;
+}
+
+.gradetitle{
+    font-weight: bold;
+    font-size: 3em;
+    color: #3CAE6A;
+    text-decoration: underline;
+}
+
+.grades{
+    //margin-left:25%;
+}
+
+.gradeHeader{
+    //margin-right: 6.250em;
+    //margin: 25% 0;
+}
+
+.top{
+    padding: 5em 0em 0em 2em;
+}
+
+.segment{
+    padding: 3em 0em;
+}
