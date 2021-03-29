@@ -11,6 +11,7 @@ import SecurityGrade from '../Components/Header/grade'
 import AnalysisHeader from '../Components/Header/analysisTitle'
 import Reused from '../Components/Reused_Passwords/reused_passwords'
 import MFA from '../Components/MFA/mfa'
+import CriticalNode from '../Components/Most_Valuable_Node/critical_node'
 import Footer from '../Components/Footer/footer'
 
 export const Analysis = ({graph}) => {
@@ -77,10 +78,17 @@ export const Analysis = ({graph}) => {
         }
     }
 
+    const critical_node_renderer = (can_render) => {
+        if(can_render){
+            return <CriticalNode name={analysis.analysis.most_critical_node} solution="be careful of spam"/>
+        }
+    }
+
 
     return(
         <>
         {renderHeroHeader()}
+
         <Segment vertical>
         <div className='segment'>
             <Container>
@@ -90,6 +98,10 @@ export const Analysis = ({graph}) => {
 
                 <Card.Group centered itemsPerRow={reached_data ? 1 : 0}>
                     {non_MFA_account_renderer(reached_data)}
+                </Card.Group>
+
+                <Card.Group centered itemsPerRow={reached_data ? 1 : 0}>
+                    {critical_node_renderer(reached_data)}
                 </Card.Group>
             </Container>
         </div>

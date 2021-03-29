@@ -27,14 +27,17 @@ def graph_analysis(account_access_interview_data):
 
     #Convert data into a graph data structure
     convert_account_access_data_to_graph(account_access_interview_data)
-    #Find the accounts with 2FA
 
     analysis={
         #Find the user defined weak passwords
         "bad_passwords": find_user_defined_weak_passwords(),
         #Find re-used passwords
         "reused_passwords": find_reused_passwords(),
-        "non_MFA_accounts": find_non_MFA_accounts()
+        #Find the accounts without MFA
+        "non_MFA_accounts": find_non_MFA_accounts(),
+        #Find most critical Nodes in graph
+        "most_critical_node": find_most_critical_node(),
+        "devices": devices
     }
     return analysis
 
@@ -93,8 +96,8 @@ def convert_account_access_data_to_graph(data):
         #Save specific data from the access interview
             #Save the password strength field
             Nodes[index].update({"ViewWhenLocked": data[index].get("ViewWhenLocked")})
-            #Save the nodes that are passwords for quick access
-            devices.append(str(index))   
+            #Save the nodes that are devices for quick access
+            devices.append(str(index))
 
 
 def add_node(name):
@@ -163,3 +166,18 @@ def find_non_MFA_accounts():
         "non_MFA":non_MFA,
         "solution": "use MFA"
         }
+
+       
+def find_most_critical_node():
+    current={
+        "name":"",
+        "length": 0
+        }
+
+    #Loop over every node
+    for index in Nodes:
+        if len(Nodes[index].get("in_edges").get("edges")) > current.get("length"):
+            current["name"]= index
+            current["length"]= len(Nodes[index].get("in_edges").get("edges"))
+            
+    return current.get("name")
