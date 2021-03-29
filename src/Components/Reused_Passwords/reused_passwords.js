@@ -3,15 +3,6 @@ import {Card, List} from 'semantic-ui-react'
 
 const header = ({name,linked,solution}) =>{
     
-    const render_at__accounts_at_risk1 = () =>{
-
-        var namesList = linked.map(function(link){
-            return <List.Item as='li' key={link}>{link}</List.Item>;
-          })
-
-        return <List as='ol'>{ namesList }</List>
-      
-    }
 
     const render_at__accounts_at_risk = () =>{
 
@@ -39,7 +30,7 @@ const header = ({name,linked,solution}) =>{
                     {solution}
                 </Card.Description>
             </Card.Content>
-            </Card>
+        </Card>
     )
 }
 

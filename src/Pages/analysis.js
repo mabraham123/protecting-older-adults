@@ -10,6 +10,7 @@ import Title from '../Components/Header/title'
 import SecurityGrade from '../Components/Header/grade'
 import AnalysisHeader from '../Components/Header/analysisTitle'
 import Reused from '../Components/Reused_Passwords/reused_passwords'
+import MFA from '../Components/MFA/mfa'
 import Footer from '../Components/Footer/footer'
 
 export const Analysis = ({graph}) => {
@@ -70,17 +71,27 @@ export const Analysis = ({graph}) => {
         }
     }
 
+    const non_MFA_account_renderer = (can_render) =>{
+        if(can_render){
+            return <MFA accounts={analysis.analysis.non_MFA_accounts.non_MFA} solution={analysis.analysis.non_MFA_accounts.solution}/>
+        }
+    }
+
 
     return(
         <>
         {renderHeroHeader()}
         <Segment vertical>
-            <div className='segment'>
-        <Container>
-        <Card.Group centered itemsPerRow={reached_data ? analysis.analysis.reused_passwords.reused.length: 1}>
-            {reused_passwords_renderer(reached_data)}
-        </Card.Group>
-        </Container>
+        <div className='segment'>
+            <Container>
+                <Card.Group centered itemsPerRow={reached_data ? analysis.analysis.reused_passwords.reused.length: 0}>
+                    {reused_passwords_renderer(reached_data)}
+                </Card.Group>
+
+                <Card.Group centered itemsPerRow={reached_data ? 1 : 0}>
+                    {non_MFA_account_renderer(reached_data)}
+                </Card.Group>
+            </Container>
         </div>
         </Segment>
 
