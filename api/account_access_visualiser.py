@@ -33,7 +33,8 @@ def graph_analysis(account_access_interview_data):
         #Find the user defined weak passwords
         "bad_passwords": find_user_defined_weak_passwords(),
         #Find re-used passwords
-        "reused_passwords": find_reused_passwords()
+        "reused_passwords": find_reused_passwords(),
+        "non_MFA_accounts": find_non_MFA_accounts()
     }
     return analysis
 
@@ -55,6 +56,7 @@ def convert_account_access_data_to_graph(data):
         #Set incoming and outgoing edges
         edges=[]
         recovery=[]
+        pairs=data[index].get("incoming")
         #Loop through the nodes needed for what is needed to access an account
         for x in range(len(data[index].get("incoming"))):
             #If the access method is not a recovery method
@@ -79,7 +81,7 @@ def convert_account_access_data_to_graph(data):
                     #Setting Node to point to current node  
                     Nodes[a]["out_edges"]["recovery"]+= [index]
         #Save both the edges for normal and recovery methods 
-        Nodes[index]["in_edges"]= {'edges':edges, 'recovery':recovery}
+        Nodes[index]["in_edges"]= {'edges':edges, 'recovery':recovery, 'pairs':pairs}
 
         #Save specific data from the access interview
         if Nodes[index]["type"] == "Password":
@@ -130,7 +132,7 @@ def find_user_defined_weak_passwords():
 def find_reused_passwords():
     reused_passwords={
         'reused':[],
-        'solution': "Avoid reusing passwords by using a different password for all of your accounts. If you are having trouble remembering all of your passwords you might benigit from some password management strategies."
+        'solution': "Avoid reusing passwords by using a different password for all of your accounts. If you are having trouble remembering all of your passwords you might benifit from some password management strategies."
     }
 
     #Loop all the passwords
@@ -144,4 +146,20 @@ def find_reused_passwords():
     return reused_passwords
 
 
- 
+def find_non_MFA_accounts():
+    non_MFA=[]
+
+    #Loop over every account
+    for index in Nodes:
+        #Check if the node is an account
+        if Nodes[index].get("type") == "Social Media" or Nodes[index].get("type") == "Email" or Nodes[index].get("type") == "Finance" or Nodes[index].get("type") == "Shopping" or Nodes[index].get("type") == "Entertainment" or Nodes[index].get("type") == "Gaming":
+            #Loop over every item in the pairs array
+            for x in range(len(Nodes[index].get("in_edges").get("pairs"))):
+                if Nodes[index].get("in_edges").get("pairs")[x].get("recovery") != True:
+                    if len(Nodes[index].get("in_edges").get("pairs")[x].get("needed")) < 3:
+                        non_MFA.append(index)
+
+    return {
+        "non_MFA":non_MFA,
+        "solution": "use MFA"
+        }
