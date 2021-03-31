@@ -18,9 +18,7 @@ import AveragePasswords from '../Components/AveragePasswords/averagepasswords'
 import StrongPasswords from '../Components/StrongPasswords/strongpasswords'
 import PasswordManager from '../Components/Password_Manager/passwordmanager'
 import DeviceProtection from '../Components/NotProtectedDevice/notprotecteddevice'
-
 import Footer from '../Components/Footer/footer'
-import { render } from '@testing-library/react'
 
 export const Analysis = ({graph}) => {
 
@@ -74,7 +72,6 @@ export const Analysis = ({graph}) => {
         var title=""
         var subheading=""
         if(can_render){
-
             switch (analysis.analysis.grade.grade) {
                 case "A+":
                     title="Perfect Score!"  
@@ -104,6 +101,9 @@ export const Analysis = ({graph}) => {
                     title="We have major work to do"  
                     subheading="We spotted fundemental and critical issues, together we can make you safer and more secure online"
                     break;
+                default:
+                    title=''
+                    subheading=''
               }
 
             var render = <AnalysisHeader title={title} subheading={subheading}/>

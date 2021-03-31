@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import { Container, 
     Button, 
     Form, 
-    Header,
     Icon,
     Segment
 } from 'semantic-ui-react'
