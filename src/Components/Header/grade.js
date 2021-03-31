@@ -1,7 +1,8 @@
 import React from 'react'
 import {Grid} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
-const grades=["A+","A","B+","B","C+","C","D+","D"]
+const grades=["A+","A","B+","B","C","D","F"]
 
 const grade = ({finalgrade}) =>{
     return(
@@ -9,7 +10,7 @@ const grade = ({finalgrade}) =>{
             <div className='grades'>
             <Grid verticalAlign='middle'>
                 <Grid.Row>
-                    <h2>Your overall secuirty score is:</h2>
+                    <h2>Your overall security score is:</h2>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>
@@ -22,6 +23,9 @@ const grade = ({finalgrade}) =>{
                     <Grid.Column>
                     <h1 className='grade'>{finalgrade}</h1>
                     </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Link to="/" target="_blank" rel="noopener noreferrer" className='link'>Find out here how your grade is calculated</Link>
                 </Grid.Row>
             </Grid>
             
