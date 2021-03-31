@@ -72,7 +72,6 @@ export const Analysis = ({graph}) => {
         var title=""
         var subheading=""
         if(can_render){
-
             switch (analysis.analysis.grade.grade) {
                 case "A+":
                     title="Perfect Score!"  
@@ -102,6 +101,9 @@ export const Analysis = ({graph}) => {
                     title="We have major work to do"  
                     subheading="We spotted fundemental and critical issues, together we can make you safer and more secure online"
                     break;
+                default:
+                    title=''
+                    subheading=''
               }
 
             var render = <AnalysisHeader title={title} subheading={subheading}/>
