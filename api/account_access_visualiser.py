@@ -3,6 +3,7 @@ import json
 Nodes={}
 passwords=[]
 devices=[]
+accounts=[]
 
 ##Initialiser for global variables
 
@@ -27,17 +28,34 @@ def graph_analysis(account_access_interview_data):
 
     #Convert data into a graph data structure
     convert_account_access_data_to_graph(account_access_interview_data)
+    #Find the user defined weak passwords
+    bad_passwords= find_user_defined_weak_passwords()
+    #Find re-used passwords
+    reused_passwords= find_reused_passwords()
+    #Find the accounts without MFA
+    non_MFA_accounts= find_non_MFA_accounts()
+    #Find most critical Nodes in graph
+    most_critical_node= find_most_critical_node()
+    devices_protected= password_protected_devices()
+
+    uses_password_manager= password_manager_present()
+
+    #Work out the users secuirty grade
+    grade=calculate_security_grade1(len(reused_passwords.get("reused")),len(non_MFA_accounts.get("non_MFA")),len(bad_passwords.get("critical")),len(bad_passwords.get("issues")), len(devices_protected.get("protected")), uses_password_manager)
+
 
     analysis={
         #Find the user defined weak passwords
-        "bad_passwords": find_user_defined_weak_passwords(),
+        "bad_passwords": bad_passwords,
         #Find re-used passwords
-        "reused_passwords": find_reused_passwords(),
+        "reused_passwords": reused_passwords,
         #Find the accounts without MFA
-        "non_MFA_accounts": find_non_MFA_accounts(),
+        "non_MFA_accounts": non_MFA_accounts,
         #Find most critical Nodes in graph
-        "most_critical_node": find_most_critical_node(),
-        "devices": devices
+        "most_critical_node": most_critical_node,
+        "devices": devices_protected,
+        "uses_password_manager": uses_password_manager,
+        "grade": grade
     }
     return analysis
 
@@ -117,6 +135,7 @@ def find_user_defined_weak_passwords():
     passwords_vulnerabilities={
         "critical": [],
         "issues": [],
+        "strong":[],
         "solution":"look at nist"
     }
     #Loop all the passwords
@@ -127,6 +146,8 @@ def find_user_defined_weak_passwords():
         elif Nodes[passwords[index]].get("strength") == "average":
             #Find any average strength passwords
             passwords_vulnerabilities["issues"].append(passwords[index])
+        else:
+            passwords_vulnerabilities["strong"].append(passwords[index])
 
     return passwords_vulnerabilities
 
@@ -156,11 +177,14 @@ def find_non_MFA_accounts():
     for index in Nodes:
         #Check if the node is an account
         if Nodes[index].get("type") == "Social Media" or Nodes[index].get("type") == "Email" or Nodes[index].get("type") == "Finance" or Nodes[index].get("type") == "Shopping" or Nodes[index].get("type") == "Entertainment" or Nodes[index].get("type") == "Gaming":
+            #Save account
+            accounts.append(str(index))
             #Loop over every item in the pairs array
             for x in range(len(Nodes[index].get("in_edges").get("pairs"))):
                 if Nodes[index].get("in_edges").get("pairs")[x].get("recovery") != True:
                     if len(Nodes[index].get("in_edges").get("pairs")[x].get("needed")) < 3:
                         non_MFA.append(index)
+
 
     return {
         "non_MFA":non_MFA,
@@ -181,3 +205,161 @@ def find_most_critical_node():
             current["length"]= len(Nodes[index].get("in_edges").get("edges"))
             
     return current.get("name")
+
+
+def calculate_precentage_reused_passwords(number_of_reused_passwords):
+    total=len(passwords)
+    precentage= round((number_of_reused_passwords/total)*100,0)
+    if precentage == 0:
+        return 7
+    elif precentage <= 10:
+        return 6
+    elif precentage > 10 and precentage <=25:
+        return 5
+    elif precentage > 25 and precentage <=50:
+        return 4
+    elif precentage > 50 and precentage <=70:
+        return 3
+    elif precentage > 70 and precentage <=90:
+        return 2
+    elif precentage > 90:
+        return 1
+
+def calculate_precentage_of_MFA_usasage_of_all_accounts(number_of_non_MFA_accounts):
+    total=len(accounts)
+    precentage= round((number_of_non_MFA_accounts/total)*100,0)
+    if precentage == 0:
+        return 7
+    elif precentage <= 10:
+        return 6
+    elif precentage > 10 and precentage <=25:
+        return 5
+    elif precentage > 25 and precentage <=50:
+        return 4
+    elif precentage > 50 and precentage <=70:
+        return 3
+    elif precentage > 70 and precentage <=90:
+        return 2
+    elif precentage > 90:
+        return 1
+
+def password_manager_present():
+    value=[ v for k,v in Nodes.items() if k.startswith('Password Manager')]
+    if len(value) > 0:
+        return True
+    else:
+        return False
+
+def calculate_precentage_of_passwords_at_a_given_strength(number_of_passwords):
+    total=len(passwords)
+    precentage= round((number_of_passwords/total)*100,0)
+    if precentage == 0:
+        return 7
+    elif precentage > 0 and precentage <=10:
+        return 6
+    elif precentage > 10 and precentage <=20:
+        return 5
+    elif precentage > 20 and precentage <=50:
+        return 4
+    elif precentage > 50 and precentage <=70:
+        return 3
+    elif precentage > 70 and precentage < 100:
+        return 2
+    elif precentage==100:
+        return 1
+
+
+def password_protected_devices():
+    password_protected_devices={
+        "protected":[],
+        "not_protected": []
+    }
+
+    for index in devices:
+        for method in range(len(Nodes[index].get("in_edges").get("edges"))):
+            if Nodes[Nodes[index].get("in_edges").get("edges")[method]].get("type") == "Password":
+                if index not in password_protected_devices["protected"]:
+                    password_protected_devices["protected"].append(index)
+            elif Nodes[Nodes[index].get("in_edges").get("edges")[method]].get("type") == "Biometric":
+                if index not in password_protected_devices["protected"]:
+                    password_protected_devices["protected"].append(index)
+            elif Nodes[Nodes[index].get("in_edges").get("edges")[method]].get("type") == "Pincode": 
+               if index not in password_protected_devices["protected"]:
+                    password_protected_devices["protected"].append(index)
+            else:
+                if index not in password_protected_devices["not_protected"]:
+                    password_protected_devices["not_protected"].append(index)
+    
+    return password_protected_devices
+
+def calculate_precentage_of_password_protected_devices_of_all_devices(password_protected_devices):
+    total = len(devices)
+    precentage= round((password_protected_devices/total)*100,0)
+    if precentage == 100:
+        return 7
+    elif precentage <100 and precentage >= 50:
+        return 3
+    elif precentage <50 and precentage >= 25 :
+        return 2
+    elif precentage <25  and precentage >=0:
+        return 0
+
+
+def calculate_security_grade1(number_of_reused_passwords,number_of_non_MF_accounts, number_of_weak_passwords,number_of_avg_passwords, number_of_password_protected_devices,uses_password_manager):
+
+    grades=["A+","A","B+","B","C","D","F"]
+    finalgrade=0
+    criteria={}
+    #Calculare grade for password reuse
+    reused_password_grade=calculate_precentage_reused_passwords(number_of_reused_passwords)
+    criteria["reused_password_grade"]= reused_password_grade
+
+    #Use of Multi-Factor_Authentication
+    MFA_usage_grade=calculate_precentage_of_MFA_usasage_of_all_accounts(number_of_non_MF_accounts)
+    criteria["MFA_usage_grade"]= MFA_usage_grade
+
+    #Check if they use a password manager
+    password_manager_grade= 7 if uses_password_manager == True else 0
+    criteria["password_manager_grade"]= password_manager_grade
+    
+    #Check how many average passwords the user has
+    number_of_avg_password_grade= calculate_precentage_of_passwords_at_a_given_strength(number_of_avg_passwords)
+    criteria["number_of_avg_password_grade"]= number_of_avg_password_grade
+    
+    #Check how many weak passwords the user has
+    number_of_weak_password_grade= calculate_precentage_of_passwords_at_a_given_strength(number_of_weak_passwords)
+    criteria["number_of_weak_password_grade"]= number_of_weak_password_grade
+    
+    #Check how many of the devices have passwords
+    number_of_password_protected_devices_grade= calculate_precentage_of_password_protected_devices_of_all_devices(number_of_password_protected_devices)
+    criteria["number_of_password_protected_devices_grade"]= number_of_password_protected_devices_grade
+    
+    total_possible_grade=len(grades)*len(criteria)
+    finalgrade= reused_password_grade + MFA_usage_grade + password_manager_grade + number_of_avg_password_grade + number_of_weak_password_grade + number_of_password_protected_devices_grade
+
+    final=round(((finalgrade/total_possible_grade)*100),0)
+
+
+
+
+    return {
+        "grade": calculate_grade(final),
+        "final": final,
+        "breakdown": criteria
+    }
+    
+def calculate_grade(grade):
+    if grade==100:
+        return "A+"
+    elif grade >=90 and grade < 100:
+        return "A"
+    elif grade >=80 and grade < 90:
+        return "B+"
+    elif grade >=70 and grade < 80:
+        return "B"
+    elif grade >=60 and grade < 70:
+        return "C"
+    elif grade >=50 and grade < 60:
+        return "D"
+    elif grade >=0 and grade < 59:
+        return "F"
