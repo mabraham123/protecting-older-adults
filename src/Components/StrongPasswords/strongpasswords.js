@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, List} from 'semantic-ui-react'
+import {Card} from 'semantic-ui-react'
 
 const StrongPasswords = ({linked}) =>{
     const render_at_strong_passwords = () =>{

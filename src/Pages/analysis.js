@@ -18,9 +18,7 @@ import AveragePasswords from '../Components/AveragePasswords/averagepasswords'
 import StrongPasswords from '../Components/StrongPasswords/strongpasswords'
 import PasswordManager from '../Components/Password_Manager/passwordmanager'
 import DeviceProtection from '../Components/NotProtectedDevice/notprotecteddevice'
-
 import Footer from '../Components/Footer/footer'
-import { render } from '@testing-library/react'
 
 export const Analysis = ({graph}) => {
 

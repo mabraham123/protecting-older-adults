@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, List, Header,Segment,Container} from 'semantic-ui-react'
+import {Segment,Container} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 
