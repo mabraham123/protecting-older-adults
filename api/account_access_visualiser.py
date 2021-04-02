@@ -41,7 +41,7 @@ def graph_analysis(account_access_interview_data):
     uses_password_manager= password_manager_present()
 
     #Work out the users secuirty grade
-    grade=calculate_security_grade1(len(reused_passwords.get("reused")),len(non_MFA_accounts.get("non_MFA")),len(bad_passwords.get("critical")),len(bad_passwords.get("issues")), len(devices_protected.get("protected")), uses_password_manager)
+    grade=calculate_security_grade(len(reused_passwords.get("reused")),len(non_MFA_accounts.get("non_MFA")),len(bad_passwords.get("critical")),len(bad_passwords.get("issues")), len(devices_protected.get("protected")), uses_password_manager)
 
 
     analysis={
@@ -172,6 +172,7 @@ def find_reused_passwords():
 
 def find_non_MFA_accounts():
     non_MFA=[]
+    MFA=[]
 
     #Loop over every account
     for index in Nodes:
@@ -184,10 +185,13 @@ def find_non_MFA_accounts():
                 if Nodes[index].get("in_edges").get("pairs")[x].get("recovery") != True:
                     if len(Nodes[index].get("in_edges").get("pairs")[x].get("needed")) < 3:
                         non_MFA.append(index)
+                    else:
+                        MFA.append(index)
 
 
     return {
         "non_MFA":non_MFA,
+        "MFA": MFA,
         "solution": "use MFA"
         }
 
@@ -305,7 +309,7 @@ def calculate_precentage_of_password_protected_devices_of_all_devices(password_p
         return 0
 
 
-def calculate_security_grade1(number_of_reused_passwords,number_of_non_MF_accounts, number_of_weak_passwords,number_of_avg_passwords, number_of_password_protected_devices,uses_password_manager):
+def calculate_security_grade(number_of_reused_passwords,number_of_non_MF_accounts, number_of_weak_passwords,number_of_avg_passwords, number_of_password_protected_devices,uses_password_manager):
 
     grades=["A+","A","B+","B","C","D","F"]
     finalgrade=0
