@@ -131,7 +131,18 @@ export const Analysis = ({graph}) => {
 
     const non_MFA_account_renderer = (can_render) =>{
         if(can_render){
-            return <MFA accounts={analysis.analysis.non_MFA_accounts.non_MFA} solution={analysis.analysis.non_MFA_accounts.solution}/>
+            if(analysis.analysis.non_MFA_accounts.non_MFA.length >0){
+                return <MFA accounts={analysis.analysis.non_MFA_accounts.non_MFA} MFA={false} solution={analysis.analysis.non_MFA_accounts.solution}/>
+            }
+        }
+    }  
+
+    
+    const MFA_account_renderer = (can_render) =>{
+        if(can_render){
+            if(analysis.analysis.non_MFA_accounts.MFA.length >0){
+                return <MFA accounts={analysis.analysis.non_MFA_accounts.MFA} MFA={true} solution={""}/>
+            }
         }
     }
 
@@ -265,6 +276,10 @@ export const Analysis = ({graph}) => {
                         <Card.Group centered itemsPerRow={reached_data && analysis.analysis.uses_password_manager ? 1: 0}>
                             {use_a_password_manager_renderer(reached_data)}
                         </Card.Group>
+                        
+                        <Card.Group centered itemsPerRow={1}>
+                            {MFA_account_renderer(reached_data)}
+                        </Card.Group>
 
                         <Card.Group centered itemsPerRow={reached_data ? 1: 0}>
                             {strong_passwords_renderer(reached_data)}
@@ -273,6 +288,8 @@ export const Analysis = ({graph}) => {
                         <Card.Group centered itemsPerRow={1}>
                             {not_reusing_password_renderer(reached_data)}
                         </Card.Group>
+
+
                   </Container>
                   </div>
               </Segment>,
