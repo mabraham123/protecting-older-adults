@@ -200,9 +200,9 @@ def find_most_critical_node():
 
     #Loop over every node
     for index in Nodes:
-        if len(Nodes[index].get("in_edges").get("edges")) > current.get("length"):
+        if (len(Nodes[index].get("out_edges").get("edges")) + len(Nodes[index].get("out_edges").get("recovery"))) > current.get("length") and Nodes[index].get("type")!='Password Manager':
             current["name"]= index
-            current["length"]= len(Nodes[index].get("in_edges").get("edges"))
+            current["length"]= len(Nodes[index].get("out_edges").get("recovery")) + len(Nodes[index].get("out_edges").get("edges"))
             
     return current.get("name")
 

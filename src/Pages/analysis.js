@@ -18,6 +18,7 @@ import AveragePasswords from '../Components/AveragePasswords/averagepasswords'
 import StrongPasswords from '../Components/StrongPasswords/strongpasswords'
 import PasswordManager from '../Components/Password_Manager/passwordmanager'
 import DeviceProtection from '../Components/NotProtectedDevice/notprotecteddevice'
+import NotReusingPasswords from '../Components/NotReusingPasswords/notreusingpasswords'
 import Footer from '../Components/Footer/footer'
 
 export const Analysis = ({graph}) => {
@@ -194,6 +195,14 @@ export const Analysis = ({graph}) => {
         }
     }
 
+    const not_reusing_password_renderer = (can_render) => {
+        if(can_render){
+            if (analysis.analysis.reused_passwords.reused.length === 0){
+                return <NotReusingPasswords/>
+            }
+        }
+    }
+
 
     const views = [
         {
@@ -259,6 +268,10 @@ export const Analysis = ({graph}) => {
 
                         <Card.Group centered itemsPerRow={reached_data ? 1: 0}>
                             {strong_passwords_renderer(reached_data)}
+                        </Card.Group>
+
+                        <Card.Group centered itemsPerRow={1}>
+                            {not_reusing_password_renderer(reached_data)}
                         </Card.Group>
                   </Container>
                   </div>
