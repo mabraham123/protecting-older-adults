@@ -1,10 +1,12 @@
 import React from 'react'
 import {Card} from 'semantic-ui-react'
 
-const header = ({name}) =>{
+const header = ({name, secure}) =>{
     
-    return(
-        <Card>
+    if(!secure){
+        //Display the non password protect accounts
+        return(
+            <Card>
             <Card.Content>
                 <Card.Header><h1>Critical Issue</h1></Card.Header>
                 <Card.Meta>
@@ -18,7 +20,25 @@ const header = ({name}) =>{
                 </Card.Description>
             </Card.Content>
         </Card>
-    )
+        )
+    }else{
+        //Display the password protect accounts
+        return(
+            <Card>
+            <Card.Content>
+                <Card.Header><h1>Device is Protected</h1></Card.Header>
+                <Card.Meta>
+                    <h5>Good job!</h5>
+                </Card.Meta>
+                <Card.Description>
+                    <h3>{name}</h3>
+                    <p>Your device is secure as there is no way to access the device without proper authentication</p>
+                </Card.Description>
+            </Card.Content>
+        </Card>
+        )
+    }
+
 }
 
 

@@ -18,7 +18,7 @@ const StrongPasswords = ({linked}) =>{
                 <h5>Good job!</h5>
             </Card.Meta>
             <Card.Description>
-                <h1>The following passwords are very secure:</h1>
+                <h1>The following password(s) are very secure:</h1>
                     {render_at_strong_passwords()}   
                 </Card.Description>
         </Card.Content>
