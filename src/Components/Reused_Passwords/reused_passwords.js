@@ -26,9 +26,9 @@ const header = ({name,linked,solution}) =>{
     return(
         <Card>
             <Card.Content>
-                <Card.Header><h1>Critical Issue</h1></Card.Header>
+                <Card.Header><h1>Password Reused</h1></Card.Header>
                 <Card.Meta>
-                    <h5>Password Reuse</h5>
+                    <h5>Critical Issue</h5>
                 </Card.Meta>
                 <Card.Description>
                     {/* <Grid>

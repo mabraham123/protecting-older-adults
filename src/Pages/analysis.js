@@ -232,15 +232,15 @@ export const Analysis = ({graph}) => {
               <Segment vertical>
               <div className='segment'>
                   <Container>
-                    <Card.Group centered itemsPerRow={reached_data ? analysis.analysis.reused_passwords.reused.length: 0}>
+                    <Card.Group stackable centered itemsPerRow={reached_data ? analysis.analysis.reused_passwords.reused.length: 0}>
                         {reused_passwords_renderer(reached_data)}
                     </Card.Group>
 
-                    <Card.Group centered itemsPerRow={reached_data ? analysis.analysis.reused_passwords.reused.length: 0}>
+                    <Card.Group stackable centered itemsPerRow={reached_data ? analysis.analysis.bad_passwords.critical.length: 0}>
                         {weak_passwords_renderer(reached_data)}
                     </Card.Group>
 
-                    <Card.Group centered itemsPerRow={reached_data ? analysis.analysis.reused_passwords.reused.length: 0}>
+                    <Card.Group stackable centered itemsPerRow={reached_data ? analysis.analysis.devices.not_protected.length: 0}>
                         {unprotected_devices_renderer(reached_data)}
                     </Card.Group>
                   </Container>
@@ -254,25 +254,21 @@ export const Analysis = ({graph}) => {
               <Segment vertical>
               <div className='segment'>
                   <Container>
-                    <Card.Group centered itemsPerRow={reached_data ? 1 : 0}>
+                    <Card.Group stackable centered itemsPerRow={reached_data ? 1 : 0}>
                         {non_MFA_account_renderer(reached_data)}
                     </Card.Group>
 
-                    <Card.Group centered itemsPerRow={reached_data ? 1 : 0}>
+                    <Card.Group stackable centered itemsPerRow={reached_data ? 1 : 0}>
                         {critical_node_renderer(reached_data)}
                     </Card.Group>
 
-                    <Card.Group centered itemsPerRow={reached_data ? 2 : 0}>
+                    <Card.Group stackable centered itemsPerRow={reached_data ? 2 : 0}>
                         {average_passwords_renderer(reached_data)}
                     </Card.Group>
 
-                    <Card.Group centered itemsPerRow={reached_data ? 1: 0}>
+                    <Card.Group stackable centered itemsPerRow={reached_data ? 1: 0}>
                           {does_not_a_password_manager_renderer(reached_data)}
-                    </Card.Group>
-                    
-                    
-
-
+                    </Card.Group>                    
                   </Container>
                   </div>
               </Segment>,
@@ -283,27 +279,25 @@ export const Analysis = ({graph}) => {
               <Segment vertical>
               <div className='segment'>
                   <Container>
-                        <Card.Group centered itemsPerRow={reached_data && analysis.analysis.uses_password_manager ? 1: 0}>
+                        <Card.Group stackable centered itemsPerRow={reached_data && analysis.analysis.uses_password_manager ? 1: 0}>
                             {use_a_password_manager_renderer(reached_data)}
                         </Card.Group>
                         
-                        <Card.Group centered itemsPerRow={1}>
+                        <Card.Group stackable centered itemsPerRow={1}>
                             {MFA_account_renderer(reached_data)}
                         </Card.Group>
 
-                        <Card.Group centered itemsPerRow={reached_data ? 1: 0}>
+                        <Card.Group stackable centered itemsPerRow={reached_data ? 1: 0}>
                             {strong_passwords_renderer(reached_data)}
                         </Card.Group>
 
-                        <Card.Group centered itemsPerRow={1}>
+                        <Card.Group stackable centered itemsPerRow={1}>
                             {not_reusing_password_renderer(reached_data)}
                         </Card.Group>
 
-                        <Card.Group centered itemsPerRow={reached_data ? analysis.analysis.devices.protected.length: 0}>
+                        <Card.Group stackable centered itemsPerRow={reached_data ? analysis.analysis.devices.protected.length: 0}>
                             {protected_devices_renderer(reached_data)}
                         </Card.Group>
-
-
                   </Container>
                   </div>
               </Segment>,
