@@ -36,7 +36,6 @@ def aag():
         'analysis': analysis
     }    
 
-
 # @app.route('/analysis/<string:graph>')
 # def analysis(graph):
 #     request_data = json.loads(request.data)
