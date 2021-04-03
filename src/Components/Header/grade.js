@@ -1,8 +1,14 @@
 import React from 'react'
-import {Grid} from 'semantic-ui-react'
+import {Grid, Divider} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 const grades=["A+","A","B+","B","C","D","F"]
+
+const grade_impact_statement_render= (grade)=>{
+    if(grade !== "A+"){
+        return (<h3 className='highlighter'>With our suggestions your score could potentially move up to an A+</h3>)
+    }
+}
 
 const grade = ({finalgrade}) =>{
     return(
@@ -24,9 +30,14 @@ const grade = ({finalgrade}) =>{
                     <h1 className='grade'>{finalgrade}</h1>
                     </Grid.Column>
                 </Grid.Row>
+                {/* <Grid.Row>
+                    {grade_impact_statement_render(finalgrade)}
+                </Grid.Row>     */}
+                <Divider/>
                 <Grid.Row>
                     <Link to="/" target="_blank" rel="noopener noreferrer" className='link'>Find out here how your grade is calculated</Link>
                 </Grid.Row>
+            
             </Grid>
             
             </div>

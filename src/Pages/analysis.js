@@ -183,7 +183,17 @@ export const Analysis = ({graph}) => {
     const unprotected_devices_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.devices.not_protected.map((device) =>
-            <DeviceProtection key={device} name={device} /> 
+            <DeviceProtection key={device} name={device} secure={false} /> 
+        );
+
+        return renders
+        }
+    }
+
+    const protected_devices_renderer = (can_render) => {
+        if(can_render){
+        var renders = analysis.analysis.devices.protected.map((device) =>
+            <DeviceProtection key={device} name={device} secure={true} /> 
         );
 
         return renders
@@ -287,6 +297,10 @@ export const Analysis = ({graph}) => {
 
                         <Card.Group centered itemsPerRow={1}>
                             {not_reusing_password_renderer(reached_data)}
+                        </Card.Group>
+
+                        <Card.Group centered itemsPerRow={reached_data ? analysis.analysis.devices.protected.length: 0}>
+                            {protected_devices_renderer(reached_data)}
                         </Card.Group>
 
 
