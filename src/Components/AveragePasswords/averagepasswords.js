@@ -6,9 +6,9 @@ const header = ({name,solution}) =>{
     return(
         <Card>
             <Card.Content>
-                <Card.Header><h1>Potential Security Issue</h1></Card.Header>
+                <Card.Header><h1>Potential Password Strength Issue</h1></Card.Header>
                 <Card.Meta>
-                    <h5>Password Strength Issue</h5>
+                    <h5>Secuirty Advice</h5>
                 </Card.Meta>
                 <Card.Description>
                     <h3>{name}</h3>

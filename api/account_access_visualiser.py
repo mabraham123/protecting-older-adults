@@ -7,8 +7,6 @@ devices=[]
 accounts=[]
 
 ##Initialiser for global variables
-
-
 def convert_json_to_dictionary(json_file):
     return json.loads(json_file)
 
@@ -37,8 +35,9 @@ def graph_analysis(account_access_interview_data):
     non_MFA_accounts= find_non_MFA_accounts()
     #Find most critical Nodes in graph
     most_critical_node= find_most_critical_node()
+    #Find out if the user has password protect devices
     devices_protected= password_protected_devices()
-
+    #Find if the user uses a password manager
     uses_password_manager= password_manager_present()
 
     #Work out the users secuirty grade
@@ -281,6 +280,9 @@ def password_protected_devices():
     }
 
     for index in devices:
+        if (len(Nodes[index].get("in_edges").get("edges"))+len(Nodes[index].get("in_edges").get("recovery")))==0 and index not in password_protected_devices["not_protected"]:
+            password_protected_devices["not_protected"].append(index)
+
         for method in range(len(Nodes[index].get("in_edges").get("edges"))):
             if Nodes[Nodes[index].get("in_edges").get("edges")[method]].get("type") == "Password":
                 if index not in password_protected_devices["protected"]:

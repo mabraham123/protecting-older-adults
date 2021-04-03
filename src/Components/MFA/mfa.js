@@ -18,7 +18,7 @@ const mfa = ({accounts,solution,MFA}) =>{
         return(
             <Card>
                 <Card.Content>
-                    <Card.Header><h1>Multi Factor Authentication in Use</h1></Card.Header>
+                    <Card.Header><h1>Multi-Factor Authentication in Use</h1></Card.Header>
                     <Card.Meta>
                     <h5>Good job!</h5>
                     </Card.Meta>
@@ -37,12 +37,12 @@ const mfa = ({accounts,solution,MFA}) =>{
         return(
             <Card>
                 <Card.Content>
-                    <Card.Header><h1>Security Issue</h1></Card.Header>
+                    <Card.Header><h1>Not Using Multi-Factor Authentication</h1></Card.Header>
                     <Card.Meta>
-                        <h5>Not Best Practice</h5>
+                        <h5>Best Practice Issue</h5>
                     </Card.Meta>
                     <Card.Description>
-                        <h3>Lack of Multi-Factor Authentication</h3>
+                        <h3>Multi-Factor Authentication</h3>
                         <p>Multi-factor authentication is an electronic authentication method in which a device user is granted access to a website or application only after successfully presenting two or more pieces of evidence to an authentication mechanism: knowledge, possession, and inherence.</p>
                         <h3 className="red">{accounts.length} account(s) at risk:</h3>
                         {render_at__accounts_at_risk()}   

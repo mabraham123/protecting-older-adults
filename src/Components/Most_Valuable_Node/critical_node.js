@@ -6,12 +6,12 @@ const most_critical_node = ({name,solution}) =>{
     return(
         <Card>
             <Card.Content>
-                <Card.Header><h1>Security Advice</h1></Card.Header>
+                <Card.Header><h1>Most Critical Part of Ecosystem</h1></Card.Header>
                 <Card.Meta>
-                    <h5>Most Critical part of Ecosystem</h5>
+                    <h5>Security Advice</h5>
                 </Card.Meta>
                 <Card.Description>
-                    <h3>Most Imporant- {name}</h3>
+                    <h3>{name}</h3>
                     <p>You need to be very careful when it comes to {name} as it is the most imporant part fo your whole personal account ecosystem.</p>   
                     <h3>Recommendation(s)</h3>
                     {solution}
