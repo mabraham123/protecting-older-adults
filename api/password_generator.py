@@ -40,10 +40,10 @@ def generate(upper=True, lower=True, nums=True , syms=True, password_length=12):
     
     password=""
     for x in range(password_length):
-        password+=all[random.randint(0,len(all)-1)]
+       password+=all[random.randint(0,len(all)-1)]
     return password
+    #password = "".join(random.sample(all, password_length))
 
-    # password = "".join(random.sample(all, password_length))
 
     
 
