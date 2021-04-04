@@ -370,3 +370,6 @@ def calculate_grade(grade):
         return "D"
     elif grade >=0 and grade < 59:
         return "F"
+
+def password_generator(upper=True, lower=True, nums=True , syms=True, password_length=12):
+    return passgen.generate(upper,lower,nums,syms,password_length)
