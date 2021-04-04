@@ -16,7 +16,6 @@ import Footer from '../Components/Footer/footer'
 
 export const Homepage = ({ onGraphChange, onDataReached }) => {
    const [graph, setGraph] = useState('')
-   var uri="graph="
 
     
     const isFileJson = (file) => {
@@ -88,7 +87,6 @@ export const Homepage = ({ onGraphChange, onDataReached }) => {
         console.log(graph)
         onGraphChange(JSON.parse(graph))
         onDataReached(true)
-        uri=uri.concat(graph)
     }
 
     return(

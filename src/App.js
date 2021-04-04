@@ -11,6 +11,7 @@ import {useState} from 'react';
 
 import { Homepage } from './Pages/homepage';
 import { Analysis } from './Pages/analysis';
+import {PasswordGenerator} from './Pages/password_generator'
 import {Test} from './Pages/test';
 
 function App() {
@@ -41,6 +42,10 @@ function App() {
           <Route path="/test">
             {/* Test Page */}
             <Test/>
+          </Route>
+          <Route exact path="/tools">
+            {/* Test Page */}
+            <PasswordGenerator/>
           </Route>
         </Switch>
       </Router>
