@@ -1,13 +1,12 @@
 import React,{ useState, useEffect } from 'react'
-
-import {Link} from 'react-router-dom'
 import { Container, 
     Button, 
     Divider,
     Grid,
     Checkbox,
     Segment,
-    Input
+    Popup,
+    Icon
 } from 'semantic-ui-react'
 
 import Title from '../Components/Header/title'
@@ -28,6 +27,15 @@ export const PasswordGenerator = () => {
     const [length, setLength] = useState(12)
     const addLength = () => setLength(value => value+1);
     const subtractLengthValue = () => setLength(value => value-1);
+
+    useEffect(()=> {
+        fetch('/generate_password').then(res => {
+            if (res.ok){
+                return res.json()
+            }
+        }).then(data => setPassword(data.password))
+    },[])
+
 
     const generate_password = () =>{
         fetch('/generate_password',{
@@ -73,24 +81,39 @@ export const PasswordGenerator = () => {
         }
     }
 
+    const copyPassword = () =>{
+        navigator.clipboard.writeText(password)
+    }
+
     const renderBody = () => {
         return (
         <Segment vertical>
             <div className='segment'>
         <Container text>
-            <h2>Password Generator</h2>
-            <Segment>
-            <h1>{password}</h1>
+            <h1>Password Generator</h1>
+            <Segment raised>
+                <Container>
+                    <h4>Result:</h4>
+                    <Popup
+                        content='Copied'
+                        on='click'
+                        pinned
+                        position='top right'
+                        trigger={<Button floated='right' onClick={copyPassword}><Icon name='copy outline' size='large'/>Copy Password</Button>}
+                    />
+                    
+                    <h1>{password}</h1>
+                </Container>
             </Segment>
             <Segment textAlign="center">
-                <h1>Customize your password</h1>
+                <h2>Customize your password</h2>
                 <Divider/>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column>
-                        <h3>{length}</h3>
-                        <Button onClick={addLength}>+</Button>
-                        <Button onClick={subtractLength}>-</Button>
+                            <h3>Pasword Length: {length}</h3>
+                            <Button onClick={subtractLength}>-</Button>
+                            <Button onClick={addLength}>+</Button>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>

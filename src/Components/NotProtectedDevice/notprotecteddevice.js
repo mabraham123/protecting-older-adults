@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card} from 'semantic-ui-react'
-
+import {Link} from 'react-router-dom'
 const header = ({name, secure}) =>{
     
     if(!secure){
@@ -17,6 +17,7 @@ const header = ({name, secure}) =>{
                     <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compramised every account where that password is used.</p>
                     <h3>Recommendation(s)</h3>
                     <p>Put passwords on your devices</p>
+                    <Link to='/tools'>See more password/pincode generation options</Link>
                 </Card.Description>
             </Card.Content>
         </Card>

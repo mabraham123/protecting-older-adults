@@ -1,5 +1,6 @@
 import React from 'react'
 import {Card,Grid} from 'semantic-ui-react'
+import{Link} from 'react-router-dom'
 import ReactFlow from 'react-flow-renderer';
 const header = ({name,linked,solution}) =>{
     
@@ -62,7 +63,8 @@ const header = ({name,linked,solution}) =>{
                             <h3 className="red">{linked.length} accounts at risk:</h3>
                             {render_at__accounts_at_risk()}   
                             <h3>Recommendation(s)</h3>
-                            {solution}
+                            <p>{solution}</p>
+                            <Link to='/tools'>See more password generation options</Link>
                 </Card.Description>
             </Card.Content>
         </Card>
