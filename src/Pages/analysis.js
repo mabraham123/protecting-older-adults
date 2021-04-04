@@ -155,7 +155,7 @@ export const Analysis = ({graph}) => {
     const weak_passwords_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.bad_passwords.critical.map((pass) =>
-            <WeakPasswords key={pass} name={pass} solution={analysis.analysis.bad_passwords.solution} /> 
+            <WeakPasswords key={pass.name} name={pass.name} solution={analysis.analysis.bad_passwords.solution} password={pass.new_password} /> 
             );
 
         return renders
@@ -165,8 +165,8 @@ export const Analysis = ({graph}) => {
     const average_passwords_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.bad_passwords.issues.map((pass) =>
-            <AveragePasswords key={pass} name={pass} solution={analysis.analysis.bad_passwords.solution} /> 
-        );
+            <AveragePasswords key={pass.name} name={pass.name} solution={analysis.analysis.bad_passwords.solution} password={pass.new_password} /> 
+            );
 
         return renders
         }

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Card} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 const most_critical_node = ({name,solution}) =>{
     
@@ -14,7 +15,8 @@ const most_critical_node = ({name,solution}) =>{
                     <h3>{name}</h3>
                     <p>You need to be very careful when it comes to {name} as it is the most imporant part fo your whole personal account ecosystem.</p>   
                     <h3>Recommendation(s)</h3>
-                    {solution}
+                    <p>{solution}</p>
+                    <Link to='/tools'>See more password generation options</Link>
                 </Card.Description>
             </Card.Content>
          </Card>

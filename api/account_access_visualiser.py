@@ -136,16 +136,25 @@ def find_user_defined_weak_passwords():
         "critical": [],
         "issues": [],
         "strong":[],
+        "new_passwords":[],
         "solution":"look at nist"
     }
     #Loop all the passwords
     for index in range(len(passwords)):
         #Find any weak passwords
         if Nodes[passwords[index]].get("strength") == "weak":
-            passwords_vulnerabilities["critical"].append(passwords[index])
+            password={
+            "name": passwords[index],
+            "new_password": password_generator(True,True,True,True,12)
+            }
+            passwords_vulnerabilities["critical"].append(password)
         elif Nodes[passwords[index]].get("strength") == "average":
             #Find any average strength passwords
-            passwords_vulnerabilities["issues"].append(passwords[index])
+            password={
+            "name": passwords[index],
+            "new_password": password_generator(True,True,True,True,12)
+            }
+            passwords_vulnerabilities["issues"].append(password)
         else:
             passwords_vulnerabilities["strong"].append(passwords[index])
 

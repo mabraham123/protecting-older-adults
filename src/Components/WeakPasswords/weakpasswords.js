@@ -1,7 +1,8 @@
 import React from 'react'
 import {Card} from 'semantic-ui-react'
+import NewPassword from '../NewPassword/newpassword'
 
-const header = ({name,solution}) =>{
+const header = ({name,solution,password}) =>{
     
     return(
         <Card>
@@ -14,7 +15,8 @@ const header = ({name,solution}) =>{
                     <h3>Weak Password: {name}</h3>
                     <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compramised every account where that password is used.</p>
                     <h3>Recommendation(s)</h3>
-                    {solution}
+                    <p>{solution}</p>
+                    <NewPassword password={password}/>                    
                 </Card.Description>
             </Card.Content>
         </Card>
