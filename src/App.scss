@@ -29,14 +29,42 @@
 .grade{
     font-weight: bold;
     font-size: 10em;
-    color: #3CAE6A;
 }
 
 .gradetitle{
     font-weight: bold;
     font-size: 3em;
-    color: #3CAE6A;
     text-decoration: underline;
+
+}
+
+.GradeAPlus{
+    color: #00e673; 
+}
+
+.GradeA{
+    color: #3CAE6A; 
+
+}
+
+.GradeBPlus{
+    color: #4db748; 
+}
+
+.GradeB{
+    color: #f0eb36; 
+}
+
+.GradeC{
+    color: #f6ae35; 
+}
+
+.GradeD{
+    color: #f0702f; 
+}
+
+.GradeF{
+    color: #e8262f; 
 }
 
 .top{
@@ -51,12 +79,7 @@
     text-decoration: underline;
 }
 
-.bg{
-    background: #606c88;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-}
+
 
 .tab{
     margin-top: 1.5em;

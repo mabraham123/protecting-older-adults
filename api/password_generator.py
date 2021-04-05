@@ -28,21 +28,20 @@ def generate(upper=True, lower=True, nums=True , syms=True, password_length=12):
         return password
     elif upper==False and lower==False and nums==True and syms==True:
         password=""
-        for x in range(password_length):
+        for _ in range(password_length):
             password+=all[random.randint(0,len(all)-1)]
         return password
     elif upper==False and lower==False and nums==True and syms==False:
         password=""
-        for x in range(password_length):
+        for _ in range(password_length):
             all='1234567890'
             password+=all[random.randint(0,len(all)-1)]
         return password
     
     password=""
-    for x in range(password_length):
+    for _ in range(password_length):
        password+=all[random.randint(0,len(all)-1)]
     return password
-    #password = "".join(random.sample(all, password_length))
 
 
     

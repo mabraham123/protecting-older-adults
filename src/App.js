@@ -11,7 +11,8 @@ import {useState} from 'react';
 
 import { Homepage } from './Pages/homepage';
 import { Analysis } from './Pages/analysis';
-import {PasswordGenerator} from './Pages/password_generator'
+import {PasswordGenerator} from './Pages/password_generator';
+import {Printer} from './Pages/printer';
 import {Test} from './Pages/test';
 
 function App() {
@@ -21,6 +22,14 @@ function App() {
   const render_analysis_page = (graph_data) =>{
     if(data_reached){
       return <Analysis graph={graph_data}/>
+    }else{
+      return <Redirect to="/"/>
+    }
+  }
+
+  const render_analysis_printable_page = (graph_data) =>{
+    if(data_reached){
+      return <Printer/>
     }else{
       return <Redirect to="/"/>
     }
@@ -46,6 +55,10 @@ function App() {
           <Route exact path="/tools">
             {/* Test Page */}
             <PasswordGenerator/>
+          </Route>
+          <Route path="/print">
+            {/* Test Page */}
+            {render_analysis_printable_page(graph)}
           </Route>
         </Switch>
       </Router>
