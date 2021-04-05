@@ -7,6 +7,7 @@ import { Container,
     Tab
 } from 'semantic-ui-react'
 
+
 import Title from '../Components/Header/title'
 import SecurityGrade from '../Components/Header/grade'
 import AnalysisHeader from '../Components/Header/analysisTitle'
@@ -39,7 +40,6 @@ export const Analysis = ({graph}) => {
                 return res.json()
             }
         }).then(data => {
-            console.log(data)
             setAnalysis(data)
             setReached_Data(true)})
     },[graph])
@@ -59,7 +59,6 @@ export const Analysis = ({graph}) => {
                     <Grid.Row textAlign='center'>
                         {security_grade_info_renderer(reached_data)}
                         {security_grade_renderer(reached_data)}
-                        {console.log(analysis)}
                     </Grid.Row>
                 </Grid>
                 </div>
@@ -72,49 +71,83 @@ export const Analysis = ({graph}) => {
     const security_grade_info_renderer = (can_render) => {
         var title=""
         var subheading=""
+        var colors=""
         if(can_render){
             switch (analysis.analysis.grade.grade) {
                 case "A+":
                     title="Perfect Score!"  
                     subheading="Keep doing what you are doing"
+                    colors="GradeAPlus"
                   break;
                 case "A":
                     title="You're almost there"  
                     subheading="Just shy of a perfect score, we spotted a few things you can be doing to be safer online"
+                    colors="GradeA"
                   break;
                 case "B+":
                     title="You're on safe grounds"  
                     subheading="We spotted a few things you can do to be safer online and be aware of"
+                    colors="GradeBPlus"
                   break;
                 case "B":
                     title="Good start"  
                     subheading="There are a few a issues we found but we have some recommendations"
+                    colors="GradeB"
                   break;
                 case "C":
                     title="We can do a bit better"  
                     subheading="A few critical issues were spotted but we'll get you there"
+                    colors="GradeC"
                   break;
                 case "D":
                     title="You're not very secure right now"  
                     subheading="There are a few fundemental issues here that are not up to standard"
+                    colors="GradeD"
                   break;
                 case "F":
                     title="We have major work to do"  
                     subheading="We spotted fundemental and critical issues, together we can make you safer and more secure online"
+                    colors="GradeF"
                     break;
                 default:
                     title=''
                     subheading=''
               }
 
-            var render = <AnalysisHeader title={title} subheading={subheading}/>
+            var render = <AnalysisHeader title={title} subheading={subheading} colors={colors}/>
             return render
         }
     }
 
     const security_grade_renderer = (can_render) => {
         if(can_render){
-            var render = <SecurityGrade finalgrade={analysis.analysis.grade.grade}/>
+            var colors=""
+            switch (analysis.analysis.grade.grade) {
+                case "A+":
+                    colors="GradeAPlus"
+                  break;
+                case "A":
+                    colors="GradeA"
+                  break;
+                case "B+":
+                    colors="GradeBPlus"
+                  break;
+                case "B":
+                    colors="GradeB"
+                  break;
+                case "C":
+                    colors="GradeC"
+                  break;
+                case "D":
+                    colors="GradeD"
+                  break;
+                case "F":
+                    colors="GradeF"
+                  break;
+                default:
+                    colors=''
+              }
+            var render = <SecurityGrade finalgrade={analysis.analysis.grade.grade} colors={colors}/>
             return render
         }
     }

@@ -21,7 +21,6 @@ export const Homepage = ({ onGraphChange, onDataReached }) => {
     const isFileJson = (file) => {
         // Check if the file is an image.
         if (file.type && file.type.indexOf('json') === -1) {
-            console.log('File is not json.', file.type, file);
             return false;
         }
         return true;
@@ -84,7 +83,6 @@ export const Homepage = ({ onGraphChange, onDataReached }) => {
     }
     
     const handleChange = (event) => {
-        console.log(graph)
         onGraphChange(JSON.parse(graph))
         onDataReached(true)
     }

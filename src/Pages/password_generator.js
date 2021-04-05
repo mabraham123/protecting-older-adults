@@ -7,7 +7,8 @@ import { Container,
     Segment,
     Popup,
     Icon,
-    List
+    Header,
+    Image
 } from 'semantic-ui-react'
 
 import Title from '../Components/Header/title'
@@ -157,14 +158,40 @@ export const PasswordGenerator = () => {
         )
     }
 
+    const passwordCreationInformation1 = () =>{
+        return(
+            <>
+            <h1>What counts as a strong password nowdays?</h1>
+                <p><b>Long-</b> Longer the length of a password, the more secure it is. A strong password is at least 12 characters long. (A good strategy to create passwords that are easy to remember is to combine at least 3 words together E.g. 'This is an easy to remember long password')</p>
+                <p><b>Random-</b> Use a mix  of letters (both upper and lowercase), numbers, and symbols to form something that can't be predicted (Remember this shouldn't resemble identifiably information such as names or dates).</p>
+                <p><b>Unique-</b> A password should never be used to access more than one account.</p>
+            </>
+        )
+    }
+
+
 
     
 
     return(
         <>
         {renderHeroHeader()}
-        {PasswordGeneratorTool()}
-        {passwordCreationInformation()}
+{/* 
+        <Container>
+        <Grid container stackable verticalAlign='middle'>
+        <Grid.Row>
+          <Grid.Column width='6'>
+                {passwordCreationInformation1()}
+          </Grid.Column>
+          <Grid.Column width='10'>
+                {PasswordGeneratorTool()}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+      </Container> */}
+      {PasswordGeneratorTool()}
+      {passwordCreationInformation()}
+        
         <Footer/>
         </>
     )

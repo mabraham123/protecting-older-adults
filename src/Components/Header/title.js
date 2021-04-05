@@ -1,7 +1,6 @@
 import React from 'react'
-import {Header,Container,Menu,Button} from 'semantic-ui-react'
+import {Container,Menu,Button} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
-import { render } from 'react-dom/cjs/react-dom.development'
 
 const header = ({passgen}) =>{
 
@@ -14,16 +13,6 @@ const header = ({passgen}) =>{
   }
 
     return(
-        // <Container>
-            // <Link to='/'><Header
-            // as='h3'
-            // content='Protecting Older Adults Online'
-            // floated='left'
-            // inverted
-            // color='blue'
-            // className='link'
-            // /></Link>
-        // </Container>
         <Container>
         <Menu text color='blue' size='mini'>
         <Link to='/'>
