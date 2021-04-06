@@ -1,8 +1,30 @@
 import React from 'react'
 import {Card} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
-const header = ({name, secure}) =>{
+const header = ({name, secure, affected}) =>{
     
+    const affect_accounts_render =()=>{
+
+        if(affected.length>0){
+            return(
+                <>
+                <h3 className="red">{affected.length} account(s) at risk:</h3>
+                {render_at__accounts_at_risk(affected)}
+                </>
+            )
+        }
+    }
+
+    const render_at__accounts_at_risk = (linked) =>{
+
+        var namesList = linked.map(function(link){
+            return <li key={link}>{link}</li>;
+          })
+
+        return<ol>{ namesList }</ol>
+      
+    }
+
     if(!secure){
         //Display the non password protect accounts
         return(
@@ -15,6 +37,7 @@ const header = ({name, secure}) =>{
                 <Card.Description>
                     <h3>{name}</h3>
                     <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compramised every account where that password is used.</p>
+                    {affect_accounts_render()}
                     <h3>Recommendation(s)</h3>
                     <p>Put passwords on your devices</p>
                     <Link to='/tools'>See more password/pincode generation options</Link>
