@@ -31,7 +31,7 @@ const header = ({name,solution,password,affected}) =>{
                 </Card.Meta>
                 <Card.Description>
                     <h3>Weak Password: {name}</h3>
-                    <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compramised every account where that password is used.</p>
+                    <p>In the Interview you said this password was weak in strength, weak passwords can be cracked by hacker even as quick as a few seconds. A password that is 6 letters long with a mix of both lower and uppercase (E.g. HqYpLW) can be cracked in 11 minutes or less.</p>
                     {render_accounts_at_risk_line()}
                     {render_at__accounts_at_risk(affected)}  
                     <h3>Recommendation(s)</h3>

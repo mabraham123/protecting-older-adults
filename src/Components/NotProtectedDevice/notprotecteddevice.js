@@ -36,10 +36,10 @@ const header = ({name, secure, affected}) =>{
                 </Card.Meta>
                 <Card.Description>
                     <h3>{name}</h3>
-                    <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compramised every account where that password is used.</p>
+                    <p>This specific device can be used by anyone that can access it, as there are no protections in place, such as a passcode or Biometric Authentication (E.g. Thumb print, FaceID). </p>
                     {affect_accounts_render()}
                     <h3>Recommendation(s)</h3>
-                    <p>Put passwords on your devices</p>
+                    <p>Make it a bit difficult for someone else who isn’t you to access anything if they have your device. For example, add a layer of security such as a password or make sure you are not logged in anywhere on this device.</p>
                     <Link to='/tools'>See more password/pincode generation options</Link>
                 </Card.Description>
             </Card.Content>
@@ -56,7 +56,7 @@ const header = ({name, secure, affected}) =>{
                 </Card.Meta>
                 <Card.Description>
                     <h3>{name}</h3>
-                    <p>Your device is secure as there is no way to access the device without proper authentication</p>
+                    <p>You have a layer of security to protect these devices as there is no way to access the device without proper authentication. This means it would be a bit harder for an attacker to get into your device if it was stolen.</p>
                 </Card.Description>
             </Card.Content>
         </Card>

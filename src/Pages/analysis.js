@@ -181,7 +181,7 @@ export const Analysis = ({graph}) => {
 
     const critical_node_renderer = (can_render) => {
         if(can_render){
-            return <CriticalNode name={analysis.analysis.most_critical_node} solution="be careful of spam"/>
+            return <CriticalNode name={analysis.analysis.most_critical_node} solution="If you were to only protect one account- make it this one. You want this account to be the most inconvenient for a hacker to get into, such as using a strong password and Multi-Factor Authentication. Be a bit more careful of Spam and Phishing attacks aimed at this account."/>
         }
     }
 
@@ -198,7 +198,7 @@ export const Analysis = ({graph}) => {
     const average_passwords_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.bad_passwords.issues.map((pass) =>
-            <AveragePasswords key={pass.name} name={pass.name} solution={analysis.analysis.bad_passwords.solution} password={pass.new_password} affected={pass.affected}/> 
+            <AveragePasswords key={pass.name} name={pass.name} solution="If your password is short consider changing this password for a more secure one. Longer the password more secure it is (at least 12 character). If you are writing your passwords down somewhere, it might as well be a strong password." password={pass.new_password} affected={pass.affected}/> 
             );
 
         return renders
