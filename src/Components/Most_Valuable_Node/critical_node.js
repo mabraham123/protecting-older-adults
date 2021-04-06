@@ -13,7 +13,7 @@ const most_critical_node = ({name,solution}) =>{
                 </Card.Meta>
                 <Card.Description>
                     <h3>{name}</h3>
-                    <p>You need to be very careful when it comes to {name} as it is the most imporant part fo your whole personal account ecosystem.</p>   
+                    <p>Through our analysis we found that {name} is the most imporant part fo your whole personal account ecosystem, as it has the most connections to other accounts.</p>
                     <h3>Recommendation(s)</h3>
                     <p>{solution}</p>
                     <Link to='/tools'>See more password generation options</Link>

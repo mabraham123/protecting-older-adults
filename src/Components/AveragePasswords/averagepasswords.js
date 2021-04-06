@@ -31,7 +31,7 @@ const header = ({name,solution, password, affected}) =>{
                 </Card.Meta>
                 <Card.Description>
                     <h3>{name}</h3>
-                    <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compramised every account where that password is used.</p>
+                    <p>If your password is short consider changing this password for a more secure one. Longer the password more secure it is (at least 12 character). If you are writing your passwords down somewhere, it might as well be a strong password.</p>
                     {render_accounts_at_risk_line()}
                     {render_at__accounts_at_risk(affected)} 
                     <h3>Recommendation(s)</h3>

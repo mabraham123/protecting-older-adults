@@ -11,7 +11,7 @@ const header = () =>{
                     <h5>Good job!</h5>
                 </Card.Meta>
                 <Card.Description>
-                    <p>Every password you use is unique.</p>
+                    <p>You are using a different password for all of your accounts.  This protects you as if one account is compromised the rest of your accounts are safe as they are not linked by passwords.</p>
                     </Card.Description>
             </Card.Content>
             </Card>

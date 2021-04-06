@@ -18,7 +18,8 @@ const StrongPasswords = ({linked}) =>{
                 <h5>Good job!</h5>
             </Card.Meta>
             <Card.Description>
-                <h1>The following password(s) are very secure:</h1>
+                <p>The goal is to make your accounts so difficult to break into that hackers don’t try or won’t get anywhere if they did. Having secure passwords really does go a long way into being better protected online.</p>
+                <h3 className='green'>The following password(s) are very secure:</h3>
                     {render_at_strong_passwords()}   
                 </Card.Description>
         </Card.Content>

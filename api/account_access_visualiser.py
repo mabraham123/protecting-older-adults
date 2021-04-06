@@ -137,7 +137,7 @@ def find_user_defined_weak_passwords():
         "issues": [],
         "strong":[],
         "new_passwords":[],
-        "solution":"look at nist"
+        "solution":"Change this password for a more secure one. Longer the password more secure it is (at least 12 character). If you are writing your passwords down somewhere, it might as well be a strong password."
     }
     #Loop all the passwords
     for index in range(len(passwords)):
@@ -168,8 +168,8 @@ def find_user_defined_weak_passwords():
 def find_reused_passwords():
     reused_passwords={
         'reused':[],
-        'solution': "Avoid reusing passwords by using a different password for all of your accounts. If you are having trouble remembering all of your passwords you might benifit from some password management strategies."
-    }
+        'solution': "Avoid reusing passwords by using a different password for all of your accounts. If you are having trouble remembering all of your passwords you might benefit from some password management strategies."
+        }
 
     #Loop all the passwords
     for index in range(len(passwords)):
@@ -204,7 +204,7 @@ def find_non_MFA_accounts():
     return {
         "non_MFA":non_MFA,
         "MFA": MFA,
-        "solution": "use MFA"
+        "solution": "Set up Multi-Factor Authentication for these accounts. This could mean one half of the password are written down somewhere or you get a text with a code to enter or an Authenticator app such as Google Authenticator or Microsoft Authenticator. (Note that SMS based MFA is less secure than an Authenticator App but still better than nothing at all)."
         }
 
        
