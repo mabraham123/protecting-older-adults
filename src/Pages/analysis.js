@@ -296,11 +296,11 @@ export const Analysis = ({graph}) => {
               <div className='segment'>
                   <Container>
                     <Card.Group stackable centered itemsPerRow={reached_data ? 1 : 0}>
-                        {non_MFA_account_renderer(reached_data)}
+                        {critical_node_renderer(reached_data)}
                     </Card.Group>
 
                     <Card.Group stackable centered itemsPerRow={reached_data ? 1 : 0}>
-                        {critical_node_renderer(reached_data)}
+                        {non_MFA_account_renderer(reached_data)}
                     </Card.Group>
 
                     <Card.Group stackable centered itemsPerRow={reached_data ? 2 : 0}>
