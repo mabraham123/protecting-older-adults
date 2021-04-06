@@ -188,7 +188,7 @@ export const Analysis = ({graph}) => {
     const weak_passwords_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.bad_passwords.critical.map((pass) =>
-            <WeakPasswords key={pass.name} name={pass.name} solution={analysis.analysis.bad_passwords.solution} password={pass.new_password} /> 
+            <WeakPasswords key={pass.name} name={pass.name} solution={analysis.analysis.bad_passwords.solution} password={pass.new_password} affected={pass.affected} /> 
             );
 
         return renders
@@ -198,7 +198,7 @@ export const Analysis = ({graph}) => {
     const average_passwords_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.bad_passwords.issues.map((pass) =>
-            <AveragePasswords key={pass.name} name={pass.name} solution={analysis.analysis.bad_passwords.solution} password={pass.new_password} /> 
+            <AveragePasswords key={pass.name} name={pass.name} solution={analysis.analysis.bad_passwords.solution} password={pass.new_password} affected={pass.affected}/> 
             );
 
         return renders
@@ -216,7 +216,7 @@ export const Analysis = ({graph}) => {
     const unprotected_devices_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.devices.not_protected.map((device) =>
-            <DeviceProtection key={device} name={device} secure={false} /> 
+            <DeviceProtection key={device.name} name={device.name} secure={false} affected={device.affected}/> 
         );
 
         return renders
@@ -257,6 +257,13 @@ export const Analysis = ({graph}) => {
         }
     }
 
+    const no_critical_issues_renderer = (can_render) =>{
+        if(can_render){
+            if(analysis.analysis.reused_passwords.reused.length<1 && analysis.analysis.bad_passwords.critical.length<1 &&analysis.analysis.devices.not_protected.length<1){
+                return <h1>Congratulations you have no critical issues!</h1>
+            }
+        }
+    }
 
     const views = [
         {
@@ -276,6 +283,7 @@ export const Analysis = ({graph}) => {
                     <Card.Group stackable centered itemsPerRow={reached_data ? analysis.analysis.devices.not_protected.length: 0}>
                         {unprotected_devices_renderer(reached_data)}
                     </Card.Group>
+                    {no_critical_issues_renderer(reached_data)}
                   </Container>
                   
                 </div>

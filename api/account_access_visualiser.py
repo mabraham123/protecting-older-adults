@@ -145,14 +145,17 @@ def find_user_defined_weak_passwords():
         if Nodes[passwords[index]].get("strength") == "weak":
             password={
             "name": passwords[index],
-            "new_password": password_generator(True,True,True,True,12)
+            "new_password": password_generator(True,True,True,True,12),
+            "affected":(Nodes[passwords[index]].get("out_edges").get("edges"))+(Nodes[passwords[index]].get("out_edges").get("recovery"))
             }
             passwords_vulnerabilities["critical"].append(password)
         elif Nodes[passwords[index]].get("strength") == "average":
+            #affected=(Nodes[passwords[index]].get("out_edges").get("edges"))+(Nodes[passwords[index]].get("out_edges").get("recovery"))
             #Find any average strength passwords
             password={
             "name": passwords[index],
-            "new_password": password_generator(True,True,True,True,12)
+            "new_password": password_generator(True,True,True,True,12),
+            "affected":(Nodes[passwords[index]].get("out_edges").get("edges"))+(Nodes[passwords[index]].get("out_edges").get("recovery"))
             }
             passwords_vulnerabilities["issues"].append(password)
         else:
@@ -290,7 +293,9 @@ def password_protected_devices():
 
     for index in devices:
         if (len(Nodes[index].get("in_edges").get("edges"))+len(Nodes[index].get("in_edges").get("recovery")))==0 and index not in password_protected_devices["not_protected"]:
-            password_protected_devices["not_protected"].append(index)
+            password_protected_devices["not_protected"].append({
+                "name":index,
+                "affected":Nodes[index].get("out_edges").get("edges")+Nodes[index].get("out_edges").get("recovery")})
 
         for method in range(len(Nodes[index].get("in_edges").get("edges"))):
             if Nodes[Nodes[index].get("in_edges").get("edges")[method]].get("type") == "Password":
@@ -304,7 +309,9 @@ def password_protected_devices():
                     password_protected_devices["protected"].append(index)
             else:
                 if index not in password_protected_devices["not_protected"]:
-                    password_protected_devices["not_protected"].append(index)
+                    password_protected_devices["not_protected"].append({
+                    "name":index,
+                    "affected":Nodes[index].get("out_edges").get("edges")+Nodes[index].get("out_edges").get("recovery")})
     
     return password_protected_devices
 

@@ -10,7 +10,6 @@
     "flask": "^0.2.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-flow-renderer": "^9.4.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
