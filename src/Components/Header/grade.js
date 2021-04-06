@@ -29,7 +29,7 @@ const grade = ({finalgrade,colors}) =>{
                 </Grid.Row>
                 <Divider/>
                 <Grid.Row>
-                    <Link to="/" target="_blank" rel="noopener noreferrer" className='link'>Find out here how your grade is calculated</Link>
+                    <Link to="/grades" target="_blank" rel="noopener noreferrer" className='link'>Find out here how your grade is calculated</Link>
                 </Grid.Row>
             
             </Grid>

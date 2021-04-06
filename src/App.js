@@ -13,7 +13,8 @@ import { Homepage } from './Pages/homepage';
 import { Analysis } from './Pages/analysis';
 import {PasswordGenerator} from './Pages/password_generator';
 import {Printer} from './Pages/printer';
-import {Test} from './Pages/test';
+import {GradesDescription} from './Pages/grades_description';
+
 
 function App() {
   const [graph, setGraph] = useState({})
@@ -48,17 +49,13 @@ function App() {
             {/* Analysis Page */}
             {render_analysis_page(graph)}
           </Route>
-          <Route path="/test">
-            {/* Test Page */}
-            <Test/>
+          <Route path="/grades">
+            {/* Grade Description Page */}
+            <GradesDescription/>
           </Route>
           <Route exact path="/tools">
-            {/* Test Page */}
+            {/* Password Generator Page */}
             <PasswordGenerator/>
-          </Route>
-          <Route path="/print">
-            {/* Test Page */}
-            {render_analysis_printable_page(graph)}
           </Route>
         </Switch>
       </Router>
