@@ -1,9 +1,11 @@
 from flask import Flask, request
+from flask_cors import CORS
 import account_access_visualiser as AAG
 import json
 
-app = Flask(__name__)
 
+app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=['GET'])
 def index():
