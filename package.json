@@ -1,7 +1,8 @@
 {
-  "homepage": ".",
   "name": "protecting-older-adults-online",
   "version": "0.1.0",
+  "homepage":"./",
+  "proxy":"https://poao-server.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",

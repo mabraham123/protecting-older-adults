@@ -29,7 +29,7 @@ export const PasswordGenerator = () => {
     const subtractLengthValue = () => setLength(value => value-1);
 
     useEffect(()=> {
-        fetch('https://poao-server.herokuapp.com//generate_password').then(res => {
+        fetch('https://poao-server.herokuapp.com/generate_password').then(res => {
             if (res.ok){
                 return res.json()
             }
@@ -38,7 +38,7 @@ export const PasswordGenerator = () => {
 
 
     const generate_password = () =>{
-        fetch('/generate_password',{
+        fetch('https://poao-server.herokuapp.com/generate_password',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
