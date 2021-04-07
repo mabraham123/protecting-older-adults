@@ -32,7 +32,7 @@ export const Analysis = ({graph}) => {
         fetch('https://poao-server.herokuapp.com/analysis',{
             method: 'POST',
             headers: {
-                "mode":"no-cors",
+                "Access-Control-Allow-Origin": "https://protecting-older-adults-online.herokuapp.com/",
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(graph)
