@@ -10,7 +10,7 @@ const footer = () =>{
         textAlign='center'
         vertical>
         <Container>
-        <p>Final Year Honours Project by <a href='https://domain.extension/external-without-params' target="_blank"><u>Melvin Abraham</u></a> </p>
+        <p>Final Year Honours Project by <a href='https://mabraham123.github.io/CV/MelvinAbraham_CV.pdf' target="_blank"><u>Melvin Abraham</u></a> </p>
         </Container>
       </Segment>
       </div>
