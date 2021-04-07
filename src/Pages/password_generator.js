@@ -30,7 +30,7 @@ export const PasswordGenerator = () => {
 
     useEffect(()=> {
         fetch('https://poao-server.herokuapp.com/generate_password',{
-            "mode":"no-cors",
+            "Access-Control-Allow-Origin": "https://protecting-older-adults-online.herokuapp.com/"
         }).then(res => {
             if (res.ok){
                 return res.json()
@@ -43,7 +43,7 @@ export const PasswordGenerator = () => {
         fetch('https://poao-server.herokuapp.com/generate_password',{
             method: 'POST',
             headers: {
-                "mode":"no-cors",
+                "Access-Control-Allow-Origin": "https://protecting-older-adults-online.herokuapp.com/",
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
