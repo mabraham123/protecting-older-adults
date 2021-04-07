@@ -141,7 +141,7 @@ export const PasswordGenerator = () => {
         <Segment vertical>
         <div className='segment'>
             <Container text>
-            <h1>What counts as a strong password nowdays?</h1>
+            <h1>What counts as a strong password now days?</h1>
             <Grid container stackable verticalAlign='middle'>
                 <Grid.Row>
                 <p><b>Long-</b> Longer the length of a password, the more secure it is. A strong password is at least 12 characters long. (A good strategy to create passwords that are easy to remember is to combine at least 3 words together E.g. 'This is an easy to remember long password')</p>

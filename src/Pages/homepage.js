@@ -1,7 +1,8 @@
 import React,{ useState } from 'react'
 
 import {Link} from 'react-router-dom'
-import { Container, 
+import { 
+    Container, 
     Button, 
     Form, 
     Icon,
@@ -46,14 +47,39 @@ export const Homepage = ({ onGraphChange, onDataReached }) => {
         return (
         <Segment vertical>
             <div className='segment'>
-        <Container text>
-            <h2>Remember to add text here
-            </h2>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </Container>
-        </div>
+            <Container text textAlign='justified'>
+                <h2>This project was created to improve the resilience of older-adults towards cyber-security attacks</h2>
+                <p>
+                This is accomplished by analysing their account’s structure, to find account security weaknesses and vulnerabilities in order to communicate personalised yet appropriate protections and information to empower older adults to be more secure online.
+                </p>
+                <p>Creating an environment that supports older adults to defend and more importantly, provide independence to protect themselves from cyber-attacks compromising their account security. </p>
+            
+                <h2>What exactly are you analysing?</h2>
+                <p>
+                Earlier in this project an Account Access Interview was taken place to capture the accounts and connections between each
+                other and real-life physical items, this was then collated to form of the older adults personal account ecosystem.
+                </p>
+
+                <h2>How does this analysis take place?</h2>
+                <p>
+                The account structure data is passed through several tests in order to find security vulnerabilities and when best practices are not being followed.
+                After the tests the older adult’s ecosystem is then given a security Grade (A+, A, B+, B, C, D and F).  
+                </p>
+                <Link to='/grades'>Learn more about how the grades are calculated here.</Link>
+
+                <h3>Objectives of the Security Analysis:</h3>
+                <ol>
+                    <li>Identify reused passwords and which accounts are at risk</li>
+                    <li>Detect how many of the accounts are configured to use Multi-Factor Authentication automatically</li>
+                    <li>If a Password Manager (digital or non-digital) is being used</li>
+                    <li>Identify Weak and Average strength passwords with the account at risk</li>
+                    <li>Check which devices are configured to use proper authentication methods</li>
+                </ol>
+
+
+
+            </Container>
+            </div>
         </Segment>
         )
     }

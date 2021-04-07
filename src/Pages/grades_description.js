@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React from 'react'
 import { Container, 
     Grid,
     Segment,
@@ -196,10 +196,9 @@ export const GradesDescription = () => {
             <Grid container stackable verticalAlign='middle'>
                 <Grid.Row>
                 <h2>About</h2>
-                <p>These grades are way of visualizing and quantifying security, made bespoke for this project. 
-                Account Access Interview data is analyzed and run through numerous tests looking for (or the lack of) security issues and vulnerabilities. </p>
-                <p>Each test works to identify a specific issue and is then given a score out of 7. After all the tests are complete the individual scores are accumulated converted into a precentage by deviding by the maximum score possible 42 (6 tests x 7 points) and multipling by 100 then placed between the appropriate grade boundaries.</p>
-                <p className='highlighter'>Note the grades scales and boundries can possbile change at a later date based on the current standards and best practices. For example a grade of B+ today may become a C later on.</p>
+                <p>These grades are way of visualizing and quantifying security, made bespoke for this project. Account Access Interview data is analysed and run through numerous tests looking for (or the lack of) security issues and vulnerabilities. </p>
+                <p>Each test works to identify a specific issue and is then given a score out of 7. After all the tests are complete the individual scores are accumulated converted into a percentage by dividing by the maximum score possible 42 (6 tests x 7 points) and multiplying by 100 then placed between the appropriate grade boundaries.</p>
+                <p className='highlighter'>Note the grades scales and boundaries can possibly change at a later date based on the current standards and best practices. For example, a grade of B+ today may become a C later on. </p>
                 </Grid.Row>
                 <Grid.Row>
                 {GradingCriteria()}
