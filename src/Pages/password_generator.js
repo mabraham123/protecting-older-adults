@@ -30,7 +30,7 @@ export const PasswordGenerator = () => {
 
     useEffect(()=> {
         fetch('https://poao-server.herokuapp.com/generate_password',{
-            "Access-Control-Allow-Origin": "*",
+            "mode":"no-cors",
         }).then(res => {
             if (res.ok){
                 return res.json()
@@ -43,7 +43,7 @@ export const PasswordGenerator = () => {
         fetch('https://poao-server.herokuapp.com/generate_password',{
             method: 'POST',
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                "mode":"no-cors",
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
