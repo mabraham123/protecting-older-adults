@@ -12,7 +12,6 @@ import {useState} from 'react';
 import { Homepage } from './Pages/homepage';
 import { Analysis } from './Pages/analysis';
 import {PasswordGenerator} from './Pages/password_generator';
-import {Printer} from './Pages/printer';
 import {GradesDescription} from './Pages/grades_description';
 
 
@@ -28,13 +27,6 @@ function App() {
     }
   }
 
-  const render_analysis_printable_page = (graph_data) =>{
-    if(data_reached){
-      return <Printer/>
-    }else{
-      return <Redirect to="/"/>
-    }
-  }
 
   // Routes for pages
   return (
