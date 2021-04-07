@@ -29,7 +29,7 @@ export const Analysis = ({graph}) => {
     const [reached_data, setReached_Data] = useState(false)
 
     useEffect(()=> {
-        fetch('/analysis',{
+        fetch('https://poao-server.herokuapp.com/analysis',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
