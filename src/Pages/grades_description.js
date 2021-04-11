@@ -22,7 +22,7 @@ export const GradesDescription = () => {
         >
             <Title/>
             <Container text>
-                <h1 className='headerContent'>Secuirty Grades</h1>
+                <h1 className='headerContent'>Security Grades</h1>
             </Container>
         </Segment>
         )
@@ -116,7 +116,7 @@ export const GradesDescription = () => {
     const GradingBoundries = () =>{
         return(
             <>
-            <h2>Grading Boundries</h2>
+            <h2>Grading Boundaries</h2>
             <Table celled >
             <Table.Header>
             <Table.Row>
