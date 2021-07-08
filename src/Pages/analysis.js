@@ -199,7 +199,7 @@ export const Analysis = ({graph}) => {
     const average_passwords_renderer = (can_render) => {
         if(can_render){
         var renders = analysis.analysis.bad_passwords.issues.map((pass) =>
-            <AveragePasswords key={pass.name} name={pass.name} solution="If your password is short consider changing this password for a more secure one. Longer the password more secure it is (at least 12 character). If you are writing your passwords down somewhere, it might as well be a strong password." password={pass.new_password} affected={pass.affected}/> 
+            <AveragePasswords key={pass.name} name={pass.name} solution="If your password is short consider changing this password for a more secure one. Longer the password the more secure it is (at least 12 characters). If you are writing your passwords down somewhere, it might as well be a strong password." password={pass.new_password} affected={pass.affected}/> 
             );
 
         return renders
