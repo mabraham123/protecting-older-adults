@@ -8,7 +8,7 @@ const header = ({present}) =>{
         return(
             <Card>
             <Card.Content>
-                <Card.Header><h1>Uses of Password Manager</h1></Card.Header>
+                <Card.Header><h1>Use of Password Manager</h1></Card.Header>
                 <Card.Meta>
                     <h5>Good job!</h5>
                 </Card.Meta>
