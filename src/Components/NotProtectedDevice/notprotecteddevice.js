@@ -39,7 +39,7 @@ const header = ({name, secure, affected}) =>{
                     <p>This specific device can be used by anyone that can access it, as there are no protections in place, such as a passcode or Biometric Authentication (E.g. Thumb print, FaceID). </p>
                     {affect_accounts_render()}
                     <h3>Recommendation(s)</h3>
-                    <p>Make it a bit difficult for someone else who isn’t you to access anything if they have your device. For example, add a layer of security such as a password or make sure you are not logged in anywhere on this device.</p>
+                    <p>Make it difficult for someone else who isn’t you to access anything if they have your device. For example, add a layer of security such as a password or make sure you are not logged in anywhere on this device.</p>
                     <Link to='/tools'>See more password/pincode generation options</Link>
                 </Card.Description>
             </Card.Content>
