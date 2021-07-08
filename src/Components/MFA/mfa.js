@@ -23,7 +23,7 @@ const mfa = ({accounts,solution,MFA}) =>{
                     <h5>Good job!</h5>
                     </Card.Meta>
                     <Card.Description>
-                        <h3>Mutli-Factor Authentication</h3>
+                        <h3>Multi-Factor Authentication</h3>
                         <p>These accounts use Multi-Factor Authentication (MFA), this is when you need more than just a password to access an account. If a hacker cracks your password then you have layer of security to stop them getting into your account. Multi-Factor usually means at least 2 (sometimes referred to as two factor authentication) or more of these three categories: ‘Something you know’ (a password), ‘Something you have’ (a phone or book etc.) and ‘Something you are’ (Thumbprint, Face Authentication etc.). </p>
                         
                         <h3 className="green">{accounts.length} account(s) at protected:</h3>
