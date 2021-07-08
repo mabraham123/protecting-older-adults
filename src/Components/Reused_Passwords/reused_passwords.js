@@ -24,7 +24,7 @@ const header = ({name,linked,solution}) =>{
                 </Card.Meta>
                 <Card.Description>
                     <h3>Password Reused: {name}</h3>
-                            <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compramised every account where that password is used.</p>
+                            <p>You use the password <b>'{name}'</b> to access more than one account. If a hacker steals <b>'{name}'</b> then you have compromised every account where that password is used.</p>
                             <h3 className="red">{linked.length} accounts at risk:</h3>
                             {render_at__accounts_at_risk()}   
                             <h3>Recommendation(s)</h3>
