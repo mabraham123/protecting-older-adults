@@ -56,7 +56,7 @@ const header = ({name, secure, affected}) =>{
                 </Card.Meta>
                 <Card.Description>
                     <h3>{name}</h3>
-                    <p>You have a layer of security to protect these devices as there is no way to access the device without proper authentication. This means it would be a bit harder for an attacker to get into your device if it was stolen.</p>
+                    <p>You have a layer of security to protect this device as there is no way to access the device without proper authentication. This means it would be a bit harder for an attacker to get into your device if it was stolen.</p>
                 </Card.Description>
             </Card.Content>
         </Card>
