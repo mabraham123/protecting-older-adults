@@ -182,7 +182,7 @@ export const Analysis = ({graph}) => {
 
     const critical_node_renderer = (can_render) => {
         if(can_render){
-            return <CriticalNode name={analysis.analysis.most_critical_node} solution="If you were to only protect one account- make it this one. You want this account to be the most inconvenient for a hacker to get into, such as using a strong password and Multi-Factor Authentication. Be a bit more careful of Spam and Phishing attacks aimed at this account."/>
+            return <CriticalNode name={analysis.analysis.most_critical_node} solution="If you were to only protect one account, make it this one. You want this account to be the most inconvenient for a hacker to get into, such as using a strong password and Multi-Factor Authentication. Be a bit more careful of Spam and Phishing attacks aimed at this account."/>
         }
     }
 
